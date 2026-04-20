@@ -3,16 +3,44 @@
 	"name": "nucc-taxonomy-mcp-server",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-03-10",
-	"compatibility_flags": ["nodejs_compat"],
-	"alias": { "ai": "./src/ai-stub.ts" },
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"alias": {
+		"ai": "./src/ai-stub.ts"
+	},
 	"migrations": [
-		{ "new_sqlite_classes": ["MyMCP"], "tag": "v1" }
+		{
+			"new_sqlite_classes": [
+				"MyMCP"
+			],
+			"tag": "v1"
+		},
+		{
+			"tag": "v2-purge-mymcp",
+			"deleted_classes": [
+				"MyMCP"
+			]
+		},
+		{
+			"tag": "v3-readd-mymcp",
+			"new_sqlite_classes": [
+				"MyMCP"
+			]
+		}
 	],
 	"durable_objects": {
 		"bindings": [
-			{ "class_name": "MyMCP", "name": "MCP_OBJECT" }
+			{
+				"class_name": "MyMCP",
+				"name": "MCP_OBJECT"
+			}
 		]
 	},
-	"observability": { "enabled": true },
-	"dev": { "port": 8876 }
+	"observability": {
+		"enabled": true
+	},
+	"dev": {
+		"port": 8876
+	}
 }
