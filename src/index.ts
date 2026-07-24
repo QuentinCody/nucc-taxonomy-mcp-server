@@ -1,3 +1,4 @@
+import { buildHealthResponse } from "@bio-mcp/provenance-core";
 import { McpAgent } from "agents/mcp";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { registerNuccSearch } from "./tools/search";
@@ -17,10 +18,7 @@ export default {
         const url = new URL(request.url);
 
         if (url.pathname === "/health") {
-            return new Response("ok", {
-                status: 200,
-                headers: { "content-type": "text/plain" },
-            });
+            return buildHealthResponse("nucc-taxonomy");
         }
 
         if (url.pathname === "/mcp") {
