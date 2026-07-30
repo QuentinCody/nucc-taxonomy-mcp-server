@@ -27,15 +27,15 @@
 			"new_sqlite_classes": [
 				"MyMCP"
 			]
+		},
+		{
+			"tag": "mcp-2026-07-28-stateless",
+			"deleted_classes": ["MyMCP"]
 		}
 	],
 	"durable_objects": {
 		"bindings": [
-			{
-				"class_name": "MyMCP",
-				"name": "MCP_OBJECT"
-			}
-		]
+			]
 	},
 	"observability": {
 		"enabled": true

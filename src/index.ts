@@ -1,10 +1,10 @@
 import { buildHealthResponse } from "@bio-mcp/provenance-core";
-import { McpAgent } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StatelessMcpWorker } from "@bio-mcp/shared/mcp";
+import { McpServer } from "@bio-mcp/shared/mcp";
 import { registerNuccSearch } from "./tools/search";
 import { registerNuccLookup } from "./tools/lookup";
 
-export class MyMCP extends McpAgent {
+export class MyMCP extends StatelessMcpWorker {
     server = new McpServer({ name: "nucc-taxonomy", version: "1.0.0" });
 
     async init() {
@@ -22,7 +22,7 @@ export default {
         }
 
         if (url.pathname === "/mcp") {
-            return MyMCP.serve("/mcp", { binding: "MCP_OBJECT" }).fetch(request, env, ctx);
+            return MyMCP.serve("/mcp").fetch(request, env, ctx);
         }
 
         return new Response("Not found", { status: 404 });

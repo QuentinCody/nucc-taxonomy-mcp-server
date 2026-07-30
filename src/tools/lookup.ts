@@ -1,5 +1,5 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod/v3";
+import type { McpServer } from "@bio-mcp/shared/mcp";
+import { z } from "zod";
 import { TAXONOMY_CODES } from "../lib/data/taxonomy-codes";
 
 /** Build a lookup map once for O(1) access */
