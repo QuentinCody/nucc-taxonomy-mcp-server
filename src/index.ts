@@ -1,15 +1,20 @@
-import { buildHealthResponse } from "@bio-mcp/provenance-core";
+import { buildHealthResponse, configureCitationSigning } from "@bio-mcp/shared";
+import {registerDatasetInfo} from "./tools/dataset-info";
 import { StatelessMcpWorker } from "@bio-mcp/shared/mcp";
 import { McpServer } from "@bio-mcp/shared/mcp";
 import { registerNuccSearch } from "./tools/search";
 import { registerNuccLookup } from "./tools/lookup";
+import { registerOfficialTaxonomy } from "./tools/official-taxonomy";
 
 export class MyMCP extends StatelessMcpWorker {
     server = new McpServer({ name: "nucc-taxonomy", version: "1.0.0" });
 
     async init() {
+        configureCitationSigning(this.env);
+        registerDatasetInfo(this.server);
         registerNuccSearch(this.server);
         registerNuccLookup(this.server);
+        registerOfficialTaxonomy(this.server);
     }
 }
 

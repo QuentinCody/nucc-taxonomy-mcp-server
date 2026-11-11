@@ -8,7 +8,8 @@
  *   Level 2: Classification (e.g., "Internal Medicine")
  *   Level 3: Specialization (e.g., "Cardiovascular Disease")
  *
- * This is a representative subset of the most commonly used codes (~200+).
+ * This is a curated subset with abbreviated descriptions. No imported release, effective
+ * date, or official CSV checksum is recorded; do not label it as a current full release.
  * Source: NUCC taxonomy code set (https://taxonomy.nucc.org/)
  */
 
